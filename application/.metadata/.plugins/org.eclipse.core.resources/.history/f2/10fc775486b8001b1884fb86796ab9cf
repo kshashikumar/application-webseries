@@ -1,0 +1,22 @@
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.app.model.WebSeriesModel;
+import com.app.repo.WebSeriesRepo;
+
+@Controller
+public class WebSeriesController {
+
+	@Autowired
+	private WebSeriesRepo webSeriesRepo;
+	
+	@PostMapping("/addSeries")
+	public String addSeries(WebSeriesModel w) {
+		webSeriesRepo.save(w);
+		return "successfully saved";
+	}
+	
+}

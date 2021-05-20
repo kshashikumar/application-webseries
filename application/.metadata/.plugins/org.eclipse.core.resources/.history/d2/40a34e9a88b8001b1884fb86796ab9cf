@@ -1,0 +1,34 @@
+package com.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.app.model.WebSeriesModel;
+import com.app.repo.WebSeriesRepo;
+
+@Controller
+public class WebSeriesController {
+
+	@Autowired
+	private WebSeriesRepo webSeriesRepo;
+	
+	@PostMapping("/addSeries")
+	@ResponseBody
+	public String addSeries(@RequestBody WebSeriesModel w) {
+		webSeriesRepo.save(w);
+		return "successfully saved";
+	}
+	
+	@GetMapping("/series")
+	@ResponseBody
+	public List<WebSeriesModel> getAll() {
+		return webSeriesRepo.findAll();
+	}
+	
+}

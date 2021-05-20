@@ -1,0 +1,15 @@
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.app.repo.WebSeriesRepo;
+
+@Controller
+public class WebSeriesController {
+
+	@Autowired
+	private WebSeriesRepo webSeriesRepo;
+	
+	
+}
